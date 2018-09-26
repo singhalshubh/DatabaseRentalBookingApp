@@ -1,3 +1,24 @@
+<?php 
+//PHP FOR REGISTERING DRIVERS
+	$db = mysqli_connect("localhost","root","","labProject") or die("Error Connecting");
+
+	$name = !empty($_POST["name"]);
+	$phoneno = !empty($_POST["phoneno"]);
+	$bikeno = !empty($_POST["bikeno"]);
+	$license = !empty($_POST["license"]);
+
+	$query = <<<EOD
+INSERT INTO `driver` (`name`, `phoneno`, `bikeno`, `license`) VALUES ('$name','$phoneno', '$bikeno', '$license');
+EOD;
+
+	mysqli_query($db,$query) or die(mysqli_error());
+
+  $result= mysqli_query($db,$query) or die(mysqli_error());
+
+  @flush();
+  
+?>
+
 <!DOCTYPE html>
 <html>
 <link href="fav.ico" rel="shortcut icon">
@@ -19,7 +40,7 @@
 <a href="index.html"><img src="logo.png" alt="" class="logo"></a>  
 </header>
 <header class="heade" align="center">
-  Join the Team of Our Drivers<br>
+  You are a part of our driver team now. Avail the benefits of the services we provide to our employees.<br>
 </header>
 </div>
 <style type="text/css">
@@ -34,6 +55,7 @@
     padding: 10px;
     padding-right: 20px;
     font-weight: bold;
+    margin-top: 15%;
    font-family: 'Kaushan Script', cursive;
 
   }
@@ -48,39 +70,4 @@
     height: 15%;
   }
 </style>
-
-
-
-  <form method="POST" action="t.php" class="f">
-     <div style="padding: 2%;">
-    	Name<br>
-      <input type="text" name="name" placeholder="Type your name" id = "name" style="width: 35%;font-size: "></div>
-      <br>
-      <div style="padding: 2%;">
-      Phone Number<br>
-      <input type="number" name="phoneno" min = "6000000000" max ="9999999999" placeholder= "E.g. 9876543260" id="phoneno" style="width: 35%;font-size: "><br>
-    </div>
-   <br>
-    <div style="padding: 2%;">
-    Bike Number<br> <input type="text" name = "bikeno" min = "1" placeholder="E.g. UK06 CD 2098" id="Bikeno" name="relation" style="width: 35%;"><br>
-    </div>
-        <div style="padding: 2%;">
-    Driving License Number<br> <input type="text" placeholder="E.g. UA453DTR" id="license" name="license" style="width: 35%;"><br>
-    </div>
-    <br>
-    <br><br>
-     <input type="submit" name="submit" value="Register" style="color: white; background-color: black; margin-left: 2%; width: 10%; font-size: 150%; border-radius: 5px;">
-     <br><br>
-  </form>
-  <style type="text/css">
-    .f
-    {
-      padding-left: 37%;
-      width: 100%;
-      padding-top: 2%;
-    }
-  </style>
-<footer class="footer">
-  
-</footer>
     </body></html>

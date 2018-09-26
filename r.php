@@ -2,9 +2,9 @@
 
 	$db = mysqli_connect("localhost","root","","labProject") or die("Error Connecting");
 
-	$name = $_POST["name"];
-	$pickLoc = $_POST["pickLoc"];
-	$dropLoc = $_POST["dropLoc"];
+	$name = $_GET["name"];
+	$pickLoc = $_GET["pickLoc"];
+	$dropLoc = $_GET["dropLoc"];
 
 	$driverId=rand(11,15);
 	$carId=rand(1,5);
