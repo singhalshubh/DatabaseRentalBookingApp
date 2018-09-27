@@ -2,40 +2,18 @@
 
   $db = mysqli_connect("localhost","root","","labProject") or die("Error Connecting");
 
-  $phoneno = $_GET["phoneno"];
+  $feedback = $_POST["feedback"];
 
   $query = <<<EOD
-select * from customer where phoneno = '$phoneno';
+INSERT INTO `feedback` (`feedback`) VALUES ('$feedback');
 EOD;
   $result = mysqli_query($db,$query) or die(mysqli_error($db));
-  $responseArray = mysqli_fetch_all($result,MYSQLI_ASSOC);
-$cid = $responseArray[0]["cid"];
-if($responseArray[0]["cid"] != NULL) 
-{ $query = <<<EOD
-select * from matchs where cid = '$cid';
-EOD;
-  $result = mysqli_query($db,$query) or die(mysqli_error($db));
-  $responseArray1 = mysqli_fetch_all($result,MYSQLI_ASSOC);
-    $id = $responseArray1[0]["id"];
-    $query = <<<EOD
-select * from  driver where id = '$id';
-EOD;
-  
-  $result = mysqli_query($db,$query) or die(mysqli_error($db));
-  $responseArray2 = mysqli_fetch_all($result,MYSQLI_ASSOC); 
-}
-elseif($responseArray[0]["cid"] == NULL)
-{
-  header("refresh:0.1;url=nobook.html");
-}
-
-  @flush();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <link href="fav.ico" rel="shortcut icon">
-  <title>Taxi Booking QLA</title>
+  <title>Taxi Booking QLA Feedback</title>
    <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,7 +62,7 @@ elseif($responseArray[0]["cid"] == NULL)
     <ul class="nav navbar-nav" style="float: right;">
       <li><a href="index.html" >Home</a></li>
       <li><a href="members.html" >Members</a></li>
-      <li><a href="form.html" style="color: white;">Ride Details</a></li>
+      <li><a href="form.html">Ride Details</a></li>
       <li><a href="register.html">Driver Registration</a></li>
       <li><a href="Terms and Conditions.pdf" target="_blank">Terms And Conditions</a></li>
     </ul></div>
@@ -95,17 +73,17 @@ elseif($responseArray[0]["cid"] == NULL)
 <img src="Logo.png" alt="" class="logo">  
 </header>
 <header class="heade" align = "center">
-  Driver Name : <?php echo($responseArray2[0]["name"]); ?> <br>
+Thank you for your feedback. Ride with us again.
 
-  Ratings : <?php echo($responseArray2[0]["rating"]);?><br>
-
-  Bike Number : <?php echo($responseArray2[0]["bikeno"]); ?><br>
-  
-  Model : <?php echo($responseArray[0]["type"]);?><br>
-
-  OTP : <?php echo($responseArray1[0]["otp"]);?><br>
-  <br>
-</header>
+  <br></header>
+  <style type="text/css">
+    .f
+    {
+      padding-left: 37%;
+      width: 100%;
+      padding-top: 2%;
+    }
+  </style>
 <style type="text/css">
   .d1
   { background-color: black;
@@ -120,10 +98,23 @@ elseif($responseArray[0]["cid"] == NULL)
   {
     background-repeat: none;
     min-width: 100%;
+    background-color: #F2EECB;
     background-size: cover;
     width: 20%;
     height: 100%;
   }
+      .bt
+    { color: black;
+      
+      margin-top: 3%;
+    }
+        .bt1
+    {
+      color: black;
+      background-color: red;
+      border-radius: 5px;
+      font-size: 150%;
+    }
         #map {
         height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
@@ -150,15 +141,7 @@ elseif($responseArray[0]["cid"] == NULL)
     color: white;
     
   }
-  .bt
-  {
-    font-size: 200%;
-    border-radius: 5%; 
-    margin-right: 20%;
-    color:white;
-    background-color: #228b22;
-    font-family: 'Source Sans Pro', sans-serif;
-  }
+
   .rent
   {
     padding-top: 3%;

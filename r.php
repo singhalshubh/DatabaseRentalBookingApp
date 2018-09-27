@@ -1,28 +1,14 @@
 <?php 
 
-	$db = mysqli_connect("localhost","root","","labProject") or die("Error Connecting");
+  $db = mysqli_connect("localhost","root","","labProject") or die("Error Connecting");
 
-	$name = $_GET["name"];
-	$pickLoc = $_GET["pickLoc"];
-	$dropLoc = $_GET["dropLoc"];
+  $phoneno = $_GET["phoneno"];
 
-	$driverId=rand(11,15);
-	$carId=rand(1,5);
-
-	$query = <<<EOD
-INSERT INTO `booking` (`name`, `pickLoc`, `dropLoc`, `driverId`, `carId`) VALUES ('$name','$pickLoc', '$dropLoc', '$driverId', '$carId');
+  $query = <<<EOD
+delete from customer where phoneno = '$phoneno';
 EOD;
-
-	mysqli_query($db,$query) or die(mysqli_error($db));
-
-$query = <<<EOD
-select bookingId from booking where name='$name' order by bookingTime desc limit 1;
-EOD;
-
-	$result= mysqli_query($db,$query) or die(mysqli_error($db));
-	$responseArray = mysqli_fetch_all($result,MYSQLI_ASSOC);
-	@flush();
-
+mysqli_query($db,$query) or die(mysqli_error($db));
+  @flush();
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,10 +60,12 @@ EOD;
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <div>
-    <ul class="nav navbar-nav" style="float: right;color: white;">
-      <li><a href="index.html"style="color: white;" >QLA</a></li>
+    <ul class="nav navbar-nav" style="float: right;">
+      <li><a href="index.html" >Home</a></li>
       <li><a href="members.html" >Members</a></li>
       <li><a href="form.html">Ride Details</a></li>
+      <li><a href="register.html">Driver Registration</a></li>
+      <li><a href="Terms and Conditions.pdf" target="_blank">Terms And Conditions</a></li>
     </ul></div>
   </div></div>
   
@@ -85,42 +73,26 @@ EOD;
 <header class="rent">
 <img src="Logo.png" alt="" class="logo">  
 </header>
+<header class="heade" align = "center">
+Your cab has been cancelled. Kindly fill the feedback for future improvements.
 
-<div id = "map">
-  <script type="text/javascript">
-
-function initMap() {
-  // The location of Uluru
-  var geocoder = new google.maps.Geocoder();
-  var latitude = "";
-  var longitude = "";
-  var address = "<?php echo($responseArray[0]["pickLoc"]); ?>";
-      geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-          latitude = results[0].geometry.location.lat();
-          longitude = results[0].geometry.location.lng();}
-        });
-  var uluru = {lat: latitude, lng: longitude};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-  </script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEYSjGkTxEFvRdJDkhoOUBbKC0YfILiRQ&callback=initMap">
-    </script>
-</div>
- <header style="box-shadow: 10px; padding-top: 3%;"> 
-  <div class="d1">
-    Booking Confirmed
-    <h6  style="float: right;font-size: 100%;"> <?php echo($responseArray[0]["name"]); ?> </h6>
-  </div>
-  <div class="d2">
-  </div>
-
-</header>
+  <br></header>
+<form method="POST" action="feed.php" class="f">
+     <div style="padding: 2%;">
+      Feedback<br>
+      <input type="text" name="feedback" placeholder="Type text....." id = "feedback" style="width: 35%; height: 10%;"></div>
+      <br>
+     <input type="submit" name="submit" value="Submit" style="color: white; background-color: black; margin-left: 2%; width: 10%; font-size: 150%; border-radius: 5px;">
+     <br><br>
+  </form>
+  <style type="text/css">
+    .f
+    {
+      padding-left: 37%;
+      width: 100%;
+      padding-top: 2%;
+    }
+  </style>
 <style type="text/css">
   .d1
   { background-color: black;
@@ -135,10 +107,23 @@ function initMap() {
   {
     background-repeat: none;
     min-width: 100%;
+    background-color: #F2EECB;
     background-size: cover;
     width: 20%;
     height: 100%;
   }
+      .bt
+    { color: black;
+      
+      margin-top: 3%;
+    }
+        .bt1
+    {
+      color: black;
+      background-color: red;
+      border-radius: 5px;
+      font-size: 150%;
+    }
         #map {
         height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
@@ -165,15 +150,7 @@ function initMap() {
     color: white;
     
   }
-  .bt
-  {
-    font-size: 200%;
-    border-radius: 5%; 
-    margin-right: 20%;
-    color:white;
-    background-color: #228b22;
-    font-family: 'Source Sans Pro', sans-serif;
-  }
+
   .rent
   {
     padding-top: 3%;
@@ -194,6 +171,15 @@ function initMap() {
     color: black;
     font-weight: bold;
     text-decoration: none;
+  }
+    .heade{
+    font-size: 240%;
+    color: black;
+    padding: 10px;
+    padding-right: 20px;
+    font-weight: bold;
+    margin-top: 8%;
+   font-family: 'Special Elite', cursive;
   }
 </style>
 

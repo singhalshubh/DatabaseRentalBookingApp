@@ -10,8 +10,7 @@ EOD;
   $result = mysqli_query($db,$query) or die(mysqli_error($db));
   $responseArray = mysqli_fetch_all($result,MYSQLI_ASSOC);
 $cid = $responseArray[0]["cid"];
-if($responseArray[0]["cid"] != NULL) 
-{ $query = <<<EOD
+ $query = <<<EOD
 select * from matchs where cid = '$cid';
 EOD;
   $result = mysqli_query($db,$query) or die(mysqli_error($db));
@@ -23,11 +22,6 @@ EOD;
   
   $result = mysqli_query($db,$query) or die(mysqli_error($db));
   $responseArray2 = mysqli_fetch_all($result,MYSQLI_ASSOC); 
-}
-elseif($responseArray[0]["cid"] == NULL)
-{
-  header("refresh:0.1;url=nobook.html");
-}
 
   @flush();
 ?>
@@ -106,6 +100,9 @@ elseif($responseArray[0]["cid"] == NULL)
   OTP : <?php echo($responseArray1[0]["otp"]);?><br>
   <br>
 </header>
+<div class="bt" align = "center">
+<button class="bt1"><a href = "r.php">Cancel the cab</a></button>
+</div>
 <style type="text/css">
   .d1
   { background-color: black;
@@ -120,10 +117,23 @@ elseif($responseArray[0]["cid"] == NULL)
   {
     background-repeat: none;
     min-width: 100%;
+    background-color: #F2EECB;
     background-size: cover;
     width: 20%;
     height: 100%;
   }
+      .bt
+    { color: black;
+      
+      margin-top: 3%;
+    }
+        .bt1
+    {
+      color: black;
+      background-color: red;
+      border-radius: 5px;
+      font-size: 150%;
+    }
         #map {
         height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
@@ -150,15 +160,7 @@ elseif($responseArray[0]["cid"] == NULL)
     color: white;
     
   }
-  .bt
-  {
-    font-size: 200%;
-    border-radius: 5%; 
-    margin-right: 20%;
-    color:white;
-    background-color: #228b22;
-    font-family: 'Source Sans Pro', sans-serif;
-  }
+
   .rent
   {
     padding-top: 3%;

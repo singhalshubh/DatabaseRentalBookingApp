@@ -15,6 +15,28 @@
 <body>
   
   <body id="background">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: black; border-color: black;">
+  <div class="container-fluid">
+                <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <div>
+    <ul class="nav navbar-nav" style="float: right;">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="members.html" >Members</a></li>
+      <li><a href="form.html">Ride Details</a></li>
+      <li><a href="register.html">Driver Registration</a></li>
+      <li><a href="Terms and Conditions.pdf" target="_blank">Terms And Conditions</a></li>
+    </ul></div>
+  </div></div>
+  
+</nav>
     <header class="rent">
 <a href="index.html"><img src="logo.png" alt="" class="logo"></a>  
 </header>
@@ -51,24 +73,27 @@
 
 
 
-  <form method="POST" action="r.php" class="f">
+  <form method="POST" action="register.php" class="f">
      <div style="padding: 2%;">
     	Name<br>
-      <input type="text" name="name" placeholder="Type your name" id = "name" style="width: 35%;font-size: "></div>
+      <input type="text" name="name" placeholder="Type your name" id = "name" style="width: 35%;font-size: " required></div>
       <br>
       <div style="padding: 2%;">
       Pickup Location<br>
-      <input type="text" name="pickLoc" placeholder= "E.g. East colony, Bandra" id="pickLoc" style="width: 35%;font-size: "><br>
+      <input type="text" name="pickLoc" placeholder= "E.g. East colony, Bandra" id="pickLoc" style="width: 35%;font-size: " required><br>
     </div>
    <br>
     <div style="padding: 2%;">
-    Drop Location<br> <input type="dropLoc" placeholder="E.g. Cleo County, Dadar" id="dropLoc" name="relation" style="width: 35%;"><br>
+    Drop Location<br> <input type="text" placeholder="E.g. Cleo County, Dadar" id="dropLoc" name="dropLoc" id="dropLoc" style="width: 35%;" required><br>
     </div>
         <div style="padding: 2%;">
-    Type<br> <input type="type" placeholder="Mini, Normal or Exclusive" id="type" name="relation" style="width: 35%;"><br>
+    Type<br> <input type="text" placeholder="Mini, Normal or Exclusive" id="type" name="type" style="width: 35%;" required><br>
+    </div><br>
+          <div style="padding: 2%;">
+      Phone Number<br>
+      <input type="text" name="phoneno" maxlength="10" minlength="10" placeholder= "E.g. 9876543260" id="phoneno" style="width: 35%;font-size: " required><br>
     </div>
     <br>
-    <br><br>
      <input type="submit" name="submit" value="Book" style="color: white; background-color: black; margin-left: 2%; width: 10%; font-size: 150%; border-radius: 5px;">
      <br><br>
   </form>

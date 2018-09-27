@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <link href="fav.ico" rel="shortcut icon">
-<title>Book Your Bike Now!</title><head>
+<title>Register as a driver!</title><head>
 <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Bad+Script|Patrick+Hand" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -15,6 +15,28 @@
 <body>
   
   <body id="background">
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: black; border-color: black;">
+  <div class="container-fluid">
+                <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <div>
+    <ul class="nav navbar-nav" style="float: right;">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="members.html" >Members</a></li>
+      <li><a href="form.html">Ride Details</a></li>
+      <li><a href="register.html">Driver Registration</a></li>
+      <li><a href="Terms and Conditions.pdf" target="_blank">Terms And Conditions</a></li>
+    </ul></div>
+  </div></div>
+  
+</nav>
     <header class="rent">
 <a href="index.html"><img src="logo.png" alt="" class="logo"></a>  
 </header>
@@ -54,18 +76,18 @@
   <form method="POST" action="t.php" class="f">
      <div style="padding: 2%;">
     	Name<br>
-      <input type="text" name="name" placeholder="Type your name" id = "name" style="width: 35%;font-size: "></div>
+      <input type="text" name="name" placeholder="Type your name" id = "name" style="width: 35%;font-size: " required></div>
       <br>
       <div style="padding: 2%;">
       Phone Number<br>
-      <input type="number" name="phoneno" min = "6000000000" max ="9999999999" placeholder= "E.g. 9876543260" id="phoneno" style="width: 35%;font-size: "><br>
+      <input type="text" name="phoneno" minlength="10" maxlength="10" placeholder= "E.g. 9876543260" id="phoneno" style="width: 35%;font-size: " required><br>
     </div>
    <br>
     <div style="padding: 2%;">
-    Bike Number<br> <input type="text" name = "bikeno" min = "1" placeholder="E.g. UK06 CD 2098" id="Bikeno" name="relation" style="width: 35%;"><br>
+    Bike Number<br> <input type="text" name = "bikeno" min = "1" placeholder="E.g. UK06 CD 2098" id="Bikeno" name="relation" style="width: 35%;" required><br>
     </div>
         <div style="padding: 2%;">
-    Driving License Number<br> <input type="text" placeholder="E.g. UA453DTR" id="license" name="license" style="width: 35%;"><br>
+    Driving License Number<br> <input type="text" placeholder="E.g. UA453DTR" id="license" name="license" style="width: 35%;" required><br>
     </div>
     <br>
     <br><br>
