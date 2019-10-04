@@ -1,4 +1,5 @@
 # DatabaseRentalBookingApp
+Term Project CSPCS33: Database systems.<br />
 Used PHP, MySQL as backend with WAMP for Windows using localhost.
 1.) Driver registration using car number plate was matched with the available records for maintaining the authenticity.<br />
 2.) The user registration is based on phone number only.<br />
