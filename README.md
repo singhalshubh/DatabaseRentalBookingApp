@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/singhalshubh/databaserentalbookingapp/badge)](https://www.codefactor.io/repository/github/singhalshubh/databaserentalbookingapp)
+
 # DatabaseRentalBookingApp
 Term Project CSPCS33: Database systems.<br />
 Used PHP, MySQL as backend with WAMP for Windows using localhost.
